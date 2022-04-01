@@ -5,11 +5,11 @@ import { CreateUserDto } from '@dtos/users.dto';
 import { HttpException } from '@exceptions/HttpException';
 import { DataStoredInToken, TokenData } from '@interfaces/auth.interface';
 import { User } from '@interfaces/users.interface';
-import UserModel from '@models/users.model';
+import userModel from '@models/users.model';
 import { isEmpty } from '@utils/util';
 
 class AuthService {
-  public users = UserModel;
+  public users = userModel;
 
   public async register(userData: CreateUserDto): Promise<{ cookie: string; user: User }> {
     if (isEmpty(userData)) throw new HttpException(400, "You're not userData");
