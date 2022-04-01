@@ -1,0 +1,98 @@
+@font-face {
+    font-family: "PublicSans";
+    src: url(/public/assets/font/static/PublicSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: "PublicSans";
+    font-weight: bold;
+    src: url(/public/assets/font/static/PublicSans-Bold.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: PublicSans, serif;
+}
+
+body{
+    background-color: rgba(22, 28, 36, 1);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#main-content{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+#main-content h1{
+    color: rgba(255, 255, 255, 1);
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+#main-content p{
+    color: rgba(145, 158, 171, 1);
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+#main-content img{
+    width: 80%;
+    margin-bottom: 48px;
+}
+
+#main-content button{
+    width: 25%;
+    height: 60px;
+    font-size: 16px;
+    line-height: 60px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+    border-width: 1px ;
+    border-style: solid;
+    background-color: rgba(0, 171, 85, 1);
+    border-color: rgba(0, 171, 85, 1);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+::placeholder{
+    color: rgba(99, 115, 129, 1);
+    font-size: 20px;
+}
+
+#main-content #email{
+    display: flex;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 16px;
+    border-color: rgba(99, 115, 129, 1) ;
+    width: 120%;
+    justify-content: space-between;
+    margin-bottom: 36px;
+}
+
+#main-content input{
+    background-color:rgba(22, 28, 36, 1);
+    border-width: 0px;
+    border-radius: 16px;
+    padding-left: 24px;
+}
+
+@media (max-width: 740px){
+    #main-content{
+        width:80%;
+    }
+}
