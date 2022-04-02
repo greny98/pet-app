@@ -12,6 +12,12 @@ class UserService {
     return this.users.find({});
   }
 
+  public async getPagination(page: number, limit = 10): Promise<User[]> {
+    if (page < 0) page = 0;
+    const skip = page * limit;
+    return this.users.find({ admin: false }, null, { limit, skip }).exec();
+  }
+
   public async findUserById(userId: string): Promise<User> {
     if (isEmpty(userId)) throw new HttpException(400, "You're not userId");
 

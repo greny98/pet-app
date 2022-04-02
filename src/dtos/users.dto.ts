@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsPhoneNumber, IsString } from 'class-validator';
 
 export class LoginDto {
   @IsString()
@@ -11,10 +11,13 @@ export class LoginDto {
 /**
  * TODO: CreateUserDto
  */
-export class CreateUserDto {
+export class CreateUserDto extends LoginDto {
   @IsString()
-  public username: string;
+  public name: string;
+
+  @IsPhoneNumber()
+  public phone: string;
 
   @IsString()
-  public password: string;
+  public address: string;
 }

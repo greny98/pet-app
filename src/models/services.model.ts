@@ -10,7 +10,7 @@ const serviceSchema: Schema = new Schema<Service>({
   type: { type: String, required: true },
   test: { type: String, required: true },
   status: {
-    type: Number,
+    type: String,
     enum: Object.values(EServiceStatus),
   },
   createdAt: Date,

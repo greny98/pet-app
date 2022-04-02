@@ -1,5 +1,5 @@
-import { model, Schema, Document, Types } from 'mongoose';
-import { EPetSex, EPetSize, EPetType, Pet } from '@interfaces/pets.interface';
+import { Document, model, Schema, Types } from 'mongoose';
+import { EPetSex, EPetSize, EPetStatus, EPetType, Pet } from '@interfaces/pets.interface';
 
 const petSchema: Schema = new Schema<Pet>({
   customer: {
@@ -12,7 +12,7 @@ const petSchema: Schema = new Schema<Pet>({
     required: true,
   },
   type: {
-    type: Number,
+    type: String,
     enum: Object.values(EPetType),
   },
   breed: {
@@ -21,7 +21,7 @@ const petSchema: Schema = new Schema<Pet>({
   },
   birthDate: Date,
   sex: {
-    type: Number,
+    type: String,
     enum: Object.values(EPetSex),
   },
   img: String,
@@ -30,9 +30,14 @@ const petSchema: Schema = new Schema<Pet>({
     default: 0,
   },
   size: {
-    type: Number,
-    required: true,
+    type: String,
+    default: EPetSize.M,
     enum: Object.values(EPetSize),
+  },
+  status: {
+    type: String,
+    default: EPetStatus.Active,
+    enum: Object.values(EPetStatus),
   },
 });
 

@@ -1,6 +1,7 @@
 import petModel from '@models/pets.model';
 import { EPetSex, EPetSize, EPetType, Pet } from '@interfaces/pets.interface';
 import customerModel from '@models/customers.model';
+import { randomNumber, randomText } from '@utils/randoms';
 
 async function seedPets() {
   await petModel.deleteMany({});
@@ -10,6 +11,24 @@ async function seedPets() {
     { customer: owners[1], sex: EPetSex.F, type: EPetType.Cat, breed: 'Mun', name: 'Dudu', size: EPetSize.M, birthDate: new Date(), weight: 4 },
     { customer: owners[2], sex: EPetSex.M, type: EPetType.Dog, breed: 'Corgi', name: 'Teddy', size: EPetSize.L, birthDate: new Date(), weight: 5 },
   ];
+  for (let i = 0; i < 50; i++) {
+    let numb = Math.floor(Math.random() * 10);
+    const sex = numb % 2 == 0 ? EPetSex.M : EPetSex.F;
+
+    numb = Math.floor(Math.random() * 10);
+    const type = numb % 2 == 0 ? EPetType.Dog : EPetType.Cat;
+
+    pets.push({
+      customer: owners[i]._id,
+      sex,
+      type,
+      breed: randomText(),
+      name: randomText(),
+      weight: randomNumber(1, 20),
+      size: EPetSize.M,
+      birthDate: new Date(),
+    });
+  }
   await petModel.insertMany(pets);
 }
 
