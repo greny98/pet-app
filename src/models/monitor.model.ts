@@ -11,7 +11,7 @@ const monitorSchema: Schema = new Schema<Monitor>({
   type: String,
   task: String,
   status: {
-    type: Number,
+    type: String,
     enum: Object.values(EMonitorStatus),
   },
 });

@@ -1,11 +1,12 @@
 import { Document, model, Schema, Types } from 'mongoose';
 import { EPetSex, EPetSize, EPetStatus, EPetType, Pet } from '@interfaces/pets.interface';
+import customerModel from '@models/customers.model';
 
 const petSchema: Schema = new Schema<Pet>({
   customer: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: 'Customer',
+    ref: customerModel,
   },
   name: {
     type: String,
