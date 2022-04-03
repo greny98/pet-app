@@ -32,5 +32,5 @@ export interface Pet {
   img?: string;
   weight: number;
   size: EPetSize;
-  status: EPetStatus;
+  status?: EPetStatus;
 }

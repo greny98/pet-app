@@ -1,7 +1,7 @@
 import { model, Schema, Document } from 'mongoose';
 import { Customer } from '@interfaces/customers.interface';
 
-const customerSchema: Schema = new Schema({
+const customerSchema: Schema = new Schema<Customer>({
   name: {
     type: String,
     required: true,
