@@ -3,7 +3,7 @@ import { EPetSex, EPetSize, EPetStatus, EPetType, Pet } from '@interfaces/pets.i
 
 const petSchema: Schema = new Schema<Pet>({
   customer: {
-    type: Types.ObjectId,
+    type: Schema.Types.ObjectId,
     required: true,
     ref: 'Customer',
   },

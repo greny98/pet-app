@@ -2,8 +2,8 @@ import { User } from '@interfaces/users.interface';
 import { Pet } from '@interfaces/pets.interface';
 
 export enum EMedicalStatus {
-  Progress,
-  Complete,
+  Progress = 'Progress',
+  Complete = 'Complete',
 }
 
 export interface MedicalHistory {

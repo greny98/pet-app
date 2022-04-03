@@ -1,5 +1,5 @@
 import { model, Schema, Document, Types } from 'mongoose';
-import { MedicalHistory } from '@interfaces/medicalHistory.interface';
+import { EMedicalStatus, MedicalHistory } from '@interfaces/medicalHistory.interface';
 
 const medicalHistorySchema: Schema = new Schema<MedicalHistory>({
   user: {
@@ -14,6 +14,10 @@ const medicalHistorySchema: Schema = new Schema<MedicalHistory>({
   },
   date: { type: Date, default: new Date() },
   diagnosis: String,
+  status: {
+    type: String,
+    enum: Object.values(EMedicalStatus),
+  },
 });
 
 const medicalHistoryModel = model<MedicalHistory & Document>('MedicalHistory', medicalHistorySchema);
