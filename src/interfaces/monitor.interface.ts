@@ -1,6 +1,6 @@
 export enum EMonitorStatus {
-  Progress,
-  Complete,
+  Progress = 'Progress',
+  Complete = 'Complete',
 }
 
 export interface Monitor {

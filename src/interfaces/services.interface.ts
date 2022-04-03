@@ -1,8 +1,8 @@
 import { MedicalHistory } from '@interfaces/medicalHistory.interface';
 
 export enum EServiceStatus {
-  Progress,
-  Complete,
+  Progress = 'Progress',
+  Complete = 'Complete',
 }
 
 export interface Service {

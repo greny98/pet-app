@@ -1,5 +1,5 @@
-import ServiceModel from '@models/services.model';
+import serviceModel from '@models/services.model';
 
 class ServicesService {
-  public services = ServiceModel;
+  public services = serviceModel;
 }

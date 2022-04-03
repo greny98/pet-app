@@ -1,8 +1,9 @@
 import UserModel from '@models/users.model';
 import { hash } from 'bcrypt';
 import { User } from '@interfaces/users.interface';
+import { randomPhone, randomText } from '@utils/randoms';
 
-async function seedAdmin() {
+async function seedUsers() {
   await UserModel.deleteMany({});
   const password = await hash('1234', 10);
 
@@ -15,17 +16,18 @@ async function seedAdmin() {
       admin: true,
       address: 'Hanoi',
     },
-    {
-      username: 'user1',
-      password,
-      name: 'My User',
-      phone: '012345678',
-      admin: false,
-      address: 'Hai Duong',
-    },
   ];
-
+  for (let i = 0; i < 20; i++) {
+    users.push({
+      username: `user${i}`,
+      password,
+      name: `${randomText()} ${randomText()}`,
+      phone: randomPhone(),
+      admin: false,
+      address: 'Ha Noi',
+    });
+  }
   await UserModel.insertMany(users);
 }
 
-export default seedAdmin;
+export default seedUsers;
