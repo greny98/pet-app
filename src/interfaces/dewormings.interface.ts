@@ -1,4 +1,6 @@
-export interface dewormings {
-  pet_id: string;
+import { Pet } from '@interfaces/pets.interface';
+
+export interface Dewormings {
+  pet: string | Pet;
   date: Date;
 }

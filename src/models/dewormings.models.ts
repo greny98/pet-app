@@ -1,19 +1,17 @@
-/**
- * TODO: Deworming model
- */
 import { model, Schema, Document } from 'mongoose';
-import { dewormings } from '@interfaces/dewormings.interface';
+import { Dewormings } from '@interfaces/dewormings.interface';
 
-const dewormingSchema: Schema = new Schema<dewormings>({
-  pet_id: {
+const dewormingSchema: Schema = new Schema<Dewormings>({
+  pet: {
     type: String,
-    require: true,
+    ref: 'Pet',
   },
   date: {
     type: Date,
     require: true,
+    default: new Date(),
   },
 });
 
-const dewormingModel = model<dewormings & Document>('Deworming', dewormingSchema);
+const dewormingModel = model<Dewormings & Document>('Deworming', dewormingSchema);
 export default dewormingModel;
