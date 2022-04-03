@@ -1,3 +1,5 @@
+import { Pet } from '@interfaces/pets.interface';
+
 export enum EMonitorStatus {
   Progress = 'Progress',
   Complete = 'Complete',
@@ -5,7 +7,7 @@ export enum EMonitorStatus {
 
 export interface Monitor {
   _id: string;
-  petId: string;
+  pet: string | Pet;
   type: string; //
   date: Date;
   task: string;

@@ -1,9 +1,11 @@
 import { model, Schema, Document, Types } from 'mongoose';
 import { EMonitorStatus, Monitor } from '@interfaces/monitor.interface';
+import petModel from '@models/pets.model';
 
 const monitorSchema: Schema = new Schema<Monitor>({
-  petId: {
-    type: String,
+  pet: {
+    type: Types.ObjectId,
+    ref: petModel,
     required: true,
   },
   date: Date,
