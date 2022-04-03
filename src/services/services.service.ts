@@ -7,7 +7,7 @@ class ServicesService {
   /**
    * TODO: Get by medical id
    */
-  public async getByMedical(medId: string) {
+  public async getByMedical(medicalId: string) {
     // Code here
   }
 

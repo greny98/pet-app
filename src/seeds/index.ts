@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 import seedUsers from '@seeds/user';
 import seedCustomers from '@seeds/customer';
 import seedPets from '@seeds/pet';
+import seedMedicalHistories from '@seeds/medicalHistory';
 
 const { host, port, database }: dbConfig = config.get('dbConfig');
 (async function seeds() {
@@ -18,6 +19,7 @@ const { host, port, database }: dbConfig = config.get('dbConfig');
     await seedUsers();
     await seedCustomers();
     await seedPets();
+    await seedMedicalHistories();
     await mongoose.connection.close();
     console.log('DONE');
   } catch (e) {

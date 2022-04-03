@@ -7,10 +7,10 @@ export enum EMedicalStatus {
 }
 
 export interface MedicalHistory {
-  _id: string;
+  _id?: string;
   user: string | User;
   pet: string | Pet;
   date: Date;
-  diagnosis: string;
+  diagnosis?: string;
   status: EMedicalStatus;
 }

@@ -5,7 +5,7 @@ export const randomText = () => {
   return texts[Math.floor(Math.random() * texts.length)];
 };
 
-export const randomNumber = (min: number, max: number) => Math.floor(min + Math.random() * max);
+export const randomNumber = (min: number, max: number) => Math.floor(min + Math.random() * (max - min));
 
 export const randomPhone = () => {
   let phone = '0';
