@@ -6,6 +6,7 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import hpp from 'hpp';
+import ejsMate from 'ejs-mate';
 import morgan from 'morgan';
 import { connect, set } from 'mongoose';
 import swaggerJSDoc from 'swagger-jsdoc';
@@ -55,6 +56,7 @@ class App {
 
   private initializeMiddlewares() {
     this.app.set('views', path.join(__dirname, 'views'));
+    this.app.engine('ejs', ejsMate);
     this.app.set('view engine', 'ejs');
     this.app.use('/public', express.static(path.join(__dirname, '..', 'public')));
     this.app.use(morgan(config.get('log.format'), { stream }));

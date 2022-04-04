@@ -1,0 +1,26 @@
+@import "./login.css";
+@Import "./register.css";
+@import "./resetpassword.css";
+
+
+:root{
+  --bg-primary:#192028;
+}
+
+@font-face {
+  font-family: "PublicSans";
+  src: url(/public/assets/font/static/PublicSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: "PublicSans";
+  font-weight: bold;
+  src: url(/public/assets/font/static/PublicSans-Bold.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: PublicSans, serif;
+}
