@@ -1,4 +1,5 @@
 import { Customer } from '@interfaces/customers.interface';
+import { User } from '@interfaces/users.interface';
 
 export enum EPetType {
   Dog = 'Dog',
@@ -24,6 +25,7 @@ export enum EPetStatus {
 export interface Pet {
   _id?: string;
   customer: string | Customer;
+  user: string | User;
   name: string;
   type: EPetType;
   breed: string;
@@ -32,5 +34,5 @@ export interface Pet {
   img?: string;
   weight: number;
   size: EPetSize;
-  status?: EPetStatus;
+  status: EPetStatus;
 }
