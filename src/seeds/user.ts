@@ -1,7 +1,7 @@
 import UserModel from '@models/users.model';
 import { hash } from 'bcrypt';
-import { User } from '@interfaces/users.interface';
-import { randomPhone, randomText } from '@utils/randoms';
+import { EUserStatus, User } from '@interfaces/users.interface';
+import { randomNumber, randomPhone, randomText } from '@utils/randoms';
 
 async function seedUsers() {
   await UserModel.deleteMany({});
@@ -15,6 +15,7 @@ async function seedUsers() {
       phone: '012345678',
       admin: true,
       address: 'Hanoi',
+      status: EUserStatus.Active,
     },
   ];
   for (let i = 0; i < 20; i++) {
@@ -25,6 +26,7 @@ async function seedUsers() {
       phone: randomPhone(),
       admin: false,
       address: 'Ha Noi',
+      status: randomNumber(0, 2) == 1 ? EUserStatus.Active : EUserStatus.InActive,
     });
   }
   await UserModel.insertMany(users);

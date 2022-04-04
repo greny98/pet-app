@@ -1,10 +1,10 @@
 import { compare, hash } from 'bcrypt';
 import config from 'config';
 import { sign } from 'jsonwebtoken';
-import { CreateUserDto } from '@dtos/users.dto';
+import { CreateUserDto, LoginDto } from '@dtos/users.dto';
 import { HttpException } from '@exceptions/HttpException';
 import { DataStoredInToken, TokenData } from '@interfaces/auth.interface';
-import { User } from '@interfaces/users.interface';
+import { EUserStatus, User } from '@interfaces/users.interface';
 import userModel from '@models/users.model';
 import { isEmpty } from '@utils/util';
 
@@ -25,11 +25,12 @@ class AuthService {
     return { cookie, user };
   }
 
-  public async login(userData: CreateUserDto): Promise<{ cookie: string; user: User }> {
+  public async login(userData: LoginDto): Promise<{ cookie: string; user: User }> {
     if (isEmpty(userData)) throw new HttpException(400, "You're not userData");
 
-    const findUser: User = await this.users.findOne({ email: userData.username });
-    if (!findUser) throw new HttpException(409, `You're username ${userData.username} not found`);
+    const findUser: User = await this.users.findOne({ username: userData.username });
+    if (!findUser) throw new HttpException(409, `Your username ${userData.username} not found`);
+    if (findUser.status == EUserStatus.InActive) throw new HttpException(403, 'Your account is inactive');
 
     const isPasswordMatching: boolean = await compare(userData.password, findUser.password);
     if (!isPasswordMatching) throw new HttpException(409, "You're password not matching");
