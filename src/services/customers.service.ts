@@ -2,7 +2,7 @@ import customerModel from '@models/customers.model';
 import { Customer } from '@interfaces/customers.interface';
 import { HttpException } from '@exceptions/HttpException';
 import { isEmpty } from '@utils/util';
-import { CreatCustomerDto } from '@dtos/customers.dto';
+import { CreateCustomerDto } from '@dtos/customers.dto';
 
 class CustomerService {
   public customerModel = customerModel;
@@ -20,16 +20,19 @@ class CustomerService {
     return findCustomer;
   }
 
-  public async createCustomer(customerData: CreatCustomerDto): Promise<Customer> {
-    if (!isEmpty(customerData)) throw new HttpException(400, "You're not customerData");
+  public async createCustomer(customerData: CreateCustomerDto): Promise<Customer> {
+    if (isEmpty(customerData)) throw new HttpException(400, "You're not customerData");
+
+    const findCustomer: Customer = await this.customerModel.findOne({ phone: customerData.phone });
+    if (findCustomer) throw new HttpException(400, `You're customer ${customerData.name} already exists`);
 
     return await this.customerModel.create({ ...customerData });
   }
 
-  public async updateCustomer(customerId: string, customerData: CreatCustomerDto): Promise<Customer> {
+  public async updateCustomer(customerId: string, customerData): Promise<Customer> {
     if (isEmpty(customerData)) throw new HttpException(400, "You're not customerData");
 
-    const updateCustomerById: Customer = await this.customerModel.findByIdAndUpdate(customerId, { customerData });
+    const updateCustomerById: Customer = await this.customerModel.findByIdAndUpdate(customerId, { $set: customerData });
     if (!updateCustomerById) throw new HttpException(409, "You're not customer");
 
     return updateCustomerById;

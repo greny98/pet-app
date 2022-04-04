@@ -1,9 +1,9 @@
 /**
  * TODO: Customers Dto
  */
-import { IsPhoneNumber, IsString } from 'class-validator';
+import { IsPhoneNumber, IsString, IsEmail } from 'class-validator';
 
-export class CreatCustomerDto {
+export class CreateCustomerDto {
   @IsString()
   public name: string;
 
@@ -13,6 +13,6 @@ export class CreatCustomerDto {
   @IsString()
   public address: string;
 
-  @IsString()
+  @IsEmail()
   public email: string;
 }
