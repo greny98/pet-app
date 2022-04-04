@@ -1,16 +1,17 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, RequestHandler, Response } from 'express';
 import { CreateUserDto } from '@dtos/users.dto';
 import { User } from '@interfaces/users.interface';
 import UserService from '@services/users.service';
+import { PaginationQuery } from '@interfaces/routes.interface';
 
 class UsersController {
   public userService = new UserService();
 
   public getUsers = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const findAllUsersData: User[] = await this.userService.findAllUser();
-
-      res.status(200).json({ data: findAllUsersData, message: 'findAll' });
+      const { page = 0 } = req.query as any as PaginationQuery;
+      const users: User[] = await this.userService.getPagination(page);
+      res.status(200).render('users/list', { users });
     } catch (error) {
       next(error);
     }

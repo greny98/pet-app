@@ -1,5 +1,5 @@
-import { model, Schema, Document } from 'mongoose';
-import { User } from '@interfaces/users.interface';
+import { Document, model, Schema } from 'mongoose';
+import { EUserStatus, User } from '@interfaces/users.interface';
 
 const userSchema: Schema = new Schema<User>({
   username: {
@@ -24,6 +24,11 @@ const userSchema: Schema = new Schema<User>({
   admin: {
     type: Boolean,
     default: false,
+  },
+  status: {
+    type: String,
+    enum: Object.values(EUserStatus),
+    default: EUserStatus.InActive,
   },
 });
 

@@ -28,7 +28,8 @@ const authMiddleware = async (req: RequestWithUser, res: Response, next: NextFun
   }
 };
 
-export const checkAdmin = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+export const checkAdmin = (req: RequestWithUser, res: Response, next: NextFunction) => {
+  console.log(req.user.admin);
   if (!req.user.admin) return res.redirect('/');
   next();
 };
