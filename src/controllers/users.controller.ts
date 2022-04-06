@@ -11,7 +11,7 @@ class UsersController {
     try {
       const { page = 0 } = req.query as any as PaginationQuery;
       const users: User[] = await this.userService.getPagination(page);
-      res.status(200).render('users/list', { users });
+      res.status(200).render('pages/user/list', { users });
     } catch (error) {
       next(error);
     }

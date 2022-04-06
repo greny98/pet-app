@@ -1,6 +1,8 @@
 @import "./login.css";
 @Import "./register.css";
 @import "./resetpassword.css";
+@import "./detail.css";
+@import "./list.css";
 
 
 :root{
@@ -23,4 +25,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: PublicSans, serif;
+  color:white;
+}
+
+.root{
+  background-color: var(--bg-main);
+  padding: 20px 0;
+}
+
+.full-height{
+  height: calc(100vh - 96px);
 }

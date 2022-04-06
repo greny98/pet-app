@@ -1,0 +1,33 @@
+<% layout('layout/layout.main') %>
+<!-- TODO: design content list pet here -->
+<div class="full-height">
+  <h1>List Pets</h1>
+  <table class="table table-borderless table-hover">
+    <thead>
+      <tr>
+        <td scope="col">#</td>
+        <td scope="col">Customer</td>
+        <td scope="col">Phone</td>
+        <td scope="col">Name</td>
+        <td scope="col">Type</td>
+        <td scope="col">Status</td>
+      </tr>
+    </thead>
+    <tbody>
+      <!--Render data-->
+      <% for (let i = 0; i < pets.length; i++) {%>
+      <tr accesskey="<%= pets[i]._id %> ">
+        <td><%= i %></td>
+        <td><%= pets[i].customer.name %></td>
+        <td><%= pets[i].customer.phone %></td>
+        <td><%= pets[i].name %></td>
+        <td><%= pets[i].type %></td>
+        <td><%= pets[i].status %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<!-- Javascript DOM -->
+<script src="/public/js/pet/list.js"></script>

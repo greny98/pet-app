@@ -25,6 +25,16 @@ class PetService {
   }
 
   /**
+   * TODO: Get pets by customer id
+   */
+  public async getByCustomerId(customerId: string) {
+    // Code here
+    const pets = await this.petModel.find({ customer: customerId });
+    if (!pets) throw new HttpException(400, 'Pet không tồn tại');
+    return pets;
+  }
+
+  /**
    * TODO: Create pet info
    */
   public async create(info: Pet) {

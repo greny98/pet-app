@@ -16,6 +16,7 @@ class PetRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(`${this.path}`, authMiddleware, this.petController.getPets);
+    this.router.get(`${this.path}/:petId`, authMiddleware, this.petController.getDetail);
     this.router.post(`${this.path}`, authMiddleware, validationMiddleware(CreatePetDto, 'body'), this.petController.getPets);
   }
 }

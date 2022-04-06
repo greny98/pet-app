@@ -2,12 +2,16 @@ import medicalHistoryModel from '@models/medicalHistory.model';
 import { MedicalHistory } from '@interfaces/medicalHistory.interface';
 
 class MedicalHistoriesService {
-  public medicalHistory = medicalHistoryModel;
+  public medicalHistoryModel = medicalHistoryModel;
+
+  public async getAll(userId: string) {
+    return this.medicalHistoryModel.find({ user: userId }).exec();
+  }
 
   /**
    * TODO: Get pagination of user
    */
-  public async getPagination(userId: string, page = 0, limit = 10) {
+  public async getPagination(userId: string) {
     // code here
   }
 
@@ -32,3 +36,4 @@ class MedicalHistoriesService {
     // code here
   }
 }
+export default MedicalHistoriesService;

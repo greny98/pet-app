@@ -1,0 +1,158 @@
+<% layout('layout/layout.main') %>
+<div class="mt-5">
+  <h3 class="mb-4">Thông tin hồ sơ thú cưng</h3>
+  <div class="detail-info-container">
+    <div>
+      <div class="detail-title-card">Chủ sở hữu</div>
+      <form action="">
+        <!-- Form Info Customer -->
+        <div class="detail-form">
+          <% for( let field of customerField ) { %>
+          <input type="text" class="form-control" placeholder="<%= field %>" value="<%= petInfo.customer[field] %>" />
+          <% } %>
+        </div>
+      </form>
+    </div>
+    <hr />
+    <div>
+      <div class="detail-title-card">Thú cưng</div>
+      <!-- Form Info Pets -->
+      <form action="">
+        <div class="d-flex align-items-center">
+          <div class="avatar-container">
+            <img alt="image-rd" class="avatar" />
+            <input type="file" class="" style="width: 80%" />
+          </div>
+          <div class="detail-form">
+            <% for( let field of petField ) { %>
+            <input type="text" class="form-control" placeholder="<%= field %>" value="<%= petInfo[field] %> " />
+            <% } %>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="btn-container">
+      <button type="button" class="btn btn-primary">Edit Profile</button>
+    </div>
+  </div>
+</div>
+<div class="mt-5">
+  <!-- Medical Record -->
+  <h3 class="mb-4">Lịch sử khám bệnh</h3>
+  <div class="detail-info-container">
+    <div>
+      <!-- Group btn -->
+      <div class="btn-container justify-content-center">
+        <div class="btn-group m-3" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked />
+          <label class="btn btn-outline-primary" id="btn_history" for="btnradio1">Lịch sử khám</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" />
+          <label class="btn btn-outline-primary" id="btn_immunization" for="btnradio2">Tiêm chủng</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
+          <label class="btn btn-outline-primary" id="btn_deworm" for="btnradio3">Tẩy giun</label>
+        </div>
+      </div>
+      <!-- List -->
+      <!-- TABLE HISTORY -->
+      <div id="table-history" class="">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">Bác sĩ</th>
+              <th scope="col">Thú cưng</th>
+              <th scope="col">Khách hàng</th>
+              <th scope="col">Thời gian</th>
+              <th scope="col">Chẩn đoán</th>
+              <th scope="col">Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mark</td>
+              <td>MiLu</td>
+              <td>Otto</td>
+              <td>22/03/1999</td>
+              <td>Sida</td>
+              <td>
+                <button class="btn btn-success" style="width: 100px">Success</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Mark</td>
+              <td>MiLu</td>
+              <td>Otto</td>
+              <td>22/03/1999</td>
+              <td>Sida</td>
+              <td>
+                <button class="btn btn-warning" style="width: 100px">Progress</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <!-- Pagination Group-->
+      </div>
+      <!-- TABLE immunization -->
+      <div id="table-immunization" class="d-none">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">Thú cưng</th>
+              <th scope="col">Tuổi</th>
+              <th scope="col">Loại văccine</th>
+              <th scope="col">Đơn vị</th>
+              <th scope="col">Thời gian</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MiLu</td>
+              <td>5</td>
+              <td>Astra Zeneca</td>
+              <td>M</td>
+              <td>22/03/1999</td>
+            </tr>
+            <tr>
+              <td>Mila</td>
+              <td>3</td>
+              <td>Pfizer</td>
+              <td>M</td>
+              <td>22/03/1999</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <!-- Pagination Group-->
+      </div>
+      <!-- TABLE DEWORM -->
+      <div id="table-deworm" class="d-none">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">Thú cưng</th>
+              <th scope="col">Thời gian</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MiLu</td>
+              <td>22/03/1999</td>
+            </tr>
+            <tr>
+              <td>Mila</td>
+              <td>22/03/1999</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <!-- Pagination Group-->
+      </div>
+    </div>
+    <div></div>
+  </div>
+</div>
+
+<!-- Javascript DOM -->
+<script src="/public/js//pet/detail.js"></script>

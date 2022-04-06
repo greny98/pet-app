@@ -1,0 +1,29 @@
+<% layout('layout/layout.main') %>
+<h1>List Users</h1>
+<div class="full-height">
+  <table class="table table-borderless table-hover">
+    <thead>
+      <tr>
+        <td scope="col">#</td>
+        <td scope="col">Username</td>
+        <td scope="col">Full name</td>
+        <td scope="col">Phone</td>
+        <td scope="col">Address</td>
+        <td scope="col">Status</td>
+      </tr>
+    </thead>
+    <tbody>
+      <!--Render data-->
+      <% for (let i = 0; i < users.length; i++) {%>
+      <tr>
+        <td><%= i %></td>
+        <td><%= users[i].username %></td>
+        <td><%= users[i].name %></td>
+        <td><%= users[i].phone %></td>
+        <td><%= users[i].address %></td>
+        <td><%= users[i].status %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>

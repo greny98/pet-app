@@ -1,0 +1,41 @@
+<% layout('layout/layout.main') %>
+<!-- TODO: design content list customer here -->
+<h1>Danh sách khách hàng</h1>
+<!-- Tool bar -->
+<div class="list-toolbar-container">
+  <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+  <div>
+    <button type="button" id="navigate_create_btn" class="btn btn-success">Tạo khách hàng</button>
+  </div>
+</div>
+<div class="full-height">
+  <table class="table table-borderless table-hover">
+    <thead>
+      <tr>
+        <td scope="col">#</td>
+        <td scope="col">Name</td>
+        <td scope="col">Phone</td>
+        <td scope="col">Address</td>
+        <td scope="col">Email</td>
+      </tr>
+    </thead>
+    <tbody>
+      <!--Render data-->
+      <% for (let i = 0; i < customers.length; i++) {%>
+      <tr accesskey="<%= customers[i]._id %>">
+        <td><%= i %></td>
+        <td><%= customers[i].name %></td>
+        <td><%= customers[i].phone %></td>
+        <td><%= customers[i].address %></td>
+        <td><%= customers[i].email %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<!-- Javascript DOM -->
+<script src="/public/js/customer/list.js"></script>
