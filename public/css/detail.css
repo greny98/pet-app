@@ -77,3 +77,24 @@ thead{
   border-radius: 8px;
 }
 
+.pagination-container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#btn-pagination{
+  margin-left:30px;
+}
+
+.btn-back{
+  background: transparent; border: none;
+}
+.btn-next{
+  background: transparent; border: none;
+}
+
+.btn-disabled{
+  opacity: 0.5;
+}
+

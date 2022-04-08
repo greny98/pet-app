@@ -8,9 +8,20 @@ import validateEnv from '@utils/validateEnv';
 import PetRoute from '@routes/pets.route';
 import CustomersRoute from './routes/customer.route';
 import MedicalHistoryRoute from './routes/medicalHistory.route';
+import DewormingRoute from './routes/deworming.route';
+import ImmunizationRoute from './routes/immunizations.route';
 
 validateEnv();
 
-const app = new App([new IndexRoute(), new UsersRoute(), new AuthRoute(), new PetRoute(), new CustomersRoute(), new MedicalHistoryRoute()]);
+const app = new App([
+  new IndexRoute(),
+  new UsersRoute(),
+  new AuthRoute(),
+  new PetRoute(),
+  new CustomersRoute(),
+  new MedicalHistoryRoute(),
+  new DewormingRoute(),
+  new ImmunizationRoute(),
+]);
 
 app.listen();

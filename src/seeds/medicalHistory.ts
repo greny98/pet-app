@@ -24,13 +24,13 @@ async function seedMedicalHistories() {
   const diagnoses = ['Sexually mature earlier', 'Soiled vent feathers', 'Digestive'];
   for (let i = 0; i < 100; i++) {
     // Random user
-    const iUser = randomNumber(0, users.length);
+    // const iUser = randomNumber(0, users.length);
     // Random pet
     const iPet = randomNumber(0, pets.length);
     // Random date
     const date = randomDate();
     histories.push({
-      user: users[iUser]._id,
+      user: pets[iPet].user,
       date,
       pet: pets[iPet]._id,
       status: EMedicalStatus.Progress,

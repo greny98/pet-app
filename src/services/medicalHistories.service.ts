@@ -1,11 +1,39 @@
 import medicalHistoryModel from '@models/medicalHistory.model';
 import { MedicalHistory } from '@interfaces/medicalHistory.interface';
+import mongoose from 'mongoose';
 
 class MedicalHistoriesService {
   public medicalHistoryModel = medicalHistoryModel;
 
   public async getAll(userId: string) {
-    return this.medicalHistoryModel.find({ user: userId }).exec();
+    return this.medicalHistoryModel
+      .find({ user: userId })
+      .populate([
+        { path: 'user' },
+        {
+          path: 'pet',
+          populate: {
+            path: 'customer',
+          },
+        },
+      ])
+      .exec();
+  }
+
+  public async getByPetId(userId: string, petId: string) {
+    console.log(userId, petId);
+    return this.medicalHistoryModel
+      .find({ user: userId, pet: new mongoose.Types.ObjectId(petId) })
+      .populate([
+        { path: 'user' },
+        {
+          path: 'pet',
+          populate: {
+            path: 'customer',
+          },
+        },
+      ])
+      .exec();
   }
 
   /**

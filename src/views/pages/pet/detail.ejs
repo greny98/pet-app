@@ -56,103 +56,28 @@
       </div>
       <!-- List -->
       <!-- TABLE HISTORY -->
-      <div id="table-history" class="">
-        <table class="table table-borderless">
-          <thead>
-            <tr>
-              <th scope="col">Bác sĩ</th>
-              <th scope="col">Thú cưng</th>
-              <th scope="col">Khách hàng</th>
-              <th scope="col">Thời gian</th>
-              <th scope="col">Chẩn đoán</th>
-              <th scope="col">Trạng thái</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Mark</td>
-              <td>MiLu</td>
-              <td>Otto</td>
-              <td>22/03/1999</td>
-              <td>Sida</td>
-              <td>
-                <button class="btn btn-success" style="width: 100px">Success</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td>MiLu</td>
-              <td>Otto</td>
-              <td>22/03/1999</td>
-              <td>Sida</td>
-              <td>
-                <button class="btn btn-warning" style="width: 100px">Progress</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div id="table-record" class="">
+        <table class="table table-borderless table-his"></table>
         <hr />
         <!-- Pagination Group-->
-      </div>
-      <!-- TABLE immunization -->
-      <div id="table-immunization" class="d-none">
-        <table class="table table-borderless">
-          <thead>
-            <tr>
-              <th scope="col">Thú cưng</th>
-              <th scope="col">Tuổi</th>
-              <th scope="col">Loại văccine</th>
-              <th scope="col">Đơn vị</th>
-              <th scope="col">Thời gian</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>MiLu</td>
-              <td>5</td>
-              <td>Astra Zeneca</td>
-              <td>M</td>
-              <td>22/03/1999</td>
-            </tr>
-            <tr>
-              <td>Mila</td>
-              <td>3</td>
-              <td>Pfizer</td>
-              <td>M</td>
-              <td>22/03/1999</td>
-            </tr>
-          </tbody>
-        </table>
-        <hr />
-        <!-- Pagination Group-->
-      </div>
-      <!-- TABLE DEWORM -->
-      <div id="table-deworm" class="d-none">
-        <table class="table table-borderless">
-          <thead>
-            <tr>
-              <th scope="col">Thú cưng</th>
-              <th scope="col">Thời gian</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>MiLu</td>
-              <td>22/03/1999</td>
-            </tr>
-            <tr>
-              <td>Mila</td>
-              <td>22/03/1999</td>
-            </tr>
-          </tbody>
-        </table>
-        <hr />
-        <!-- Pagination Group-->
+        <div class="pagination-container">
+          <div class="d-flex">
+            <div><span id="page-start">6</span> - <span id="page-end">10</span> / <span id="page-total">11</span></div>
+            <div class="d-flex" id="btn-pagination">
+              <button class="btn-back">
+                <i class="fa-solid fa-angle-left"></i>
+              </button>
+              <div style="width: 20px"></div>
+              <button class="btn-next">
+                <i class="fa-solid fa-angle-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div></div>
   </div>
-</div>
 
-<!-- Javascript DOM -->
-<script src="/public/js//pet/detail.js"></script>
+  <!-- Javascript DOM -->
+  <script src="/public/js//pet/detail.js"></script>
+</div>

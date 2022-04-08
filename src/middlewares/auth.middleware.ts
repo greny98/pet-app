@@ -17,7 +17,6 @@ const authMiddleware = async (req: RequestWithUser, res: Response, next: NextFun
       const userId = verificationResponse._id;
       findUser = await userModel.findById(userId);
     }
-    console.log(findUser);
     if (needAuth && findUser) req.user = findUser;
     else if (needAuth && !findUser) return res.redirect('/login');
     else if (!needAuth && findUser) return res.redirect('/');
