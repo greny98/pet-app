@@ -7,11 +7,11 @@ class AuthController {
   public authService = new AuthService();
 
   public renderLogin = async (req: Request, res: Response) => {
-    res.render('auth/login');
+    res.render('auth/login', { title: 'Login Page' });
   };
 
   public renderRegister = async (req: Request, res: Response) => {
-    res.render('auth/register');
+    res.render('auth/register', { title: 'Register Page' });
   };
 
   public register = async (req: Request, res: Response, next: NextFunction) => {

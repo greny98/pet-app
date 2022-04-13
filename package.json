@@ -29,6 +29,7 @@
     "ejs": "^3.1.6",
     "envalid": "^7.1.0",
     "express": "^4.17.1",
+    "ejs-mate": "^3.0.0",
     "helmet": "^4.6.0",
     "hpp": "^0.2.3",
     "jsonwebtoken": "^8.5.1",
