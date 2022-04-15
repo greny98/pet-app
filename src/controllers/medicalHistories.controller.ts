@@ -15,6 +15,20 @@ class MedicalHistoryController {
       next(error);
     }
   };
+  public getMedForm = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+    try {
+      res.status(200).render('pages/form/medical-history');
+    } catch (error) {
+      next(error);
+    }
+  };
+  // TODO-HA: create Med
+  public createMedByPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+    try {
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default MedicalHistoryController;

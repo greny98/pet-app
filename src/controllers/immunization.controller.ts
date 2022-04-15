@@ -18,6 +18,20 @@ class ImmunizationsController {
       next(error);
     }
   };
+  public getImmunizationForm = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+    try {
+      res.status(200).render('pages/form/immunization');
+    } catch (error) {
+      next(error);
+    }
+  };
+  // TODO-HA: create immunization
+  public createImmunizationPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+    try {
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default ImmunizationsController;

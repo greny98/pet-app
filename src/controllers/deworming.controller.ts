@@ -18,6 +18,20 @@ class DewormingController {
       next(error);
     }
   };
+  public getDewormForm = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+    try {
+      res.status(200).render('pages/form/deworming');
+    } catch (error) {
+      next(error);
+    }
+  };
+  // TODO-HA: create deworm
+  public createDewormPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+    try {
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default DewormingController;
