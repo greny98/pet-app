@@ -15,8 +15,8 @@ class CustomersRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(`${this.path}`, authMiddleware, this.customerController.getCustomers);
-    this.router.get(`${this.path}/:customerId`, authMiddleware, this.customerController.getDetail);
     this.router.get(`${this.path}/create`, authMiddleware, this.customerController.getCustomerForm);
+    this.router.get(`${this.path}/:customerId`, authMiddleware, this.customerController.getDetail);
     this.router.post(`${this.path}`, authMiddleware, this.customerController.createCustomer);
   }
 }
