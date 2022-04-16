@@ -37,8 +37,10 @@ class CustomersController {
       const { customerId } = req.params as any as GetDetailParams;
       const customerInfo = await this.customerService.getById(customerId);
       const petsInfo = await this.petService.getByCustomerId(customerId);
-      console.log('🚀 ~ file: customers.controller.ts ~ line 36 ~ CustomersController ~ getDetail= ~ customerInfo', petsInfo);
-      res.status(200).render('pages/customer/detail');
+      console.log('🚀 ~ file: customerInfo', customerInfo);
+      console.log('🚀 ~ file: petsInfo', petsInfo);
+
+      res.status(200).render('pages/customer/detail', { customerInfo, petsInfo });
     } catch (error) {
       next(error);
     }
