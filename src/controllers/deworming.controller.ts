@@ -1,6 +1,8 @@
 import { NextFunction, Response } from 'express';
 import { RequestWithUser } from '@/interfaces/auth.interface';
 import DewormingService from '@/services/deworming.service';
+import { DewormingDto } from '@dtos/deworming.dto';
+import { Dewormings } from '@interfaces/dewormings.interface';
 
 interface getByPetParams {
   petId: string;
@@ -28,6 +30,10 @@ class DewormingController {
   // TODO-HA: create deworm
   public createDewormPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
+      const dewormingData: DewormingDto = req.body;
+      const createDewormingData: Dewormings = await this.dewormingService.createDeworm(dewormingData);
+
+      res.status(201).json({ data: dewormingData, message: 'created' });
     } catch (error) {
       next(error);
     }
