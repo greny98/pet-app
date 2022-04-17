@@ -6,6 +6,7 @@
       <div class="detail-title-card">Chủ sở hữu</div>
       <form action="">
         <!-- Form Info Customer -->
+        <!-- TODO-MANH: Make customer input readonly -->
         <div class="detail-form">
           <% for( let field of customerField ) { %>
           <input type="text" class="form-control" placeholder="<%= field %>" value="<%= petInfo.customer[field] %>" />
@@ -23,6 +24,7 @@
             <img alt="image-rd" class="avatar" />
             <input type="file" class="" style="width: 80%" />
           </div>
+          <!-- TODO-MANH: Make pet input readonly and can edit when click button edit -->
           <div class="detail-form">
             <% for( let field of petField ) { %>
             <input type="text" class="form-control" placeholder="<%= field %>" value="<%= petInfo[field] %> " />
@@ -55,7 +57,6 @@
         </div>
       </div>
       <!-- List -->
-      <!-- TABLE HISTORY -->
       <div id="table-record" class="">
         <table class="table table-borderless table-his"></table>
         <hr />
