@@ -9,7 +9,7 @@
         <!-- TODO-MANH: Make customer input readonly -->
         <div class="detail-form">
           <% for( let field of customerField ) { %>
-          <input type="text" class="form-control" placeholder="<%= field %>" value="<%= petInfo.customer[field] %>" />
+          <input type="text" class="form-control input-form" placeholder="<%= field %>" readonly value="<%= petInfo.customer[field]  %>" />
           <% } %>
         </div>
       </form>
@@ -27,7 +27,7 @@
           <!-- TODO-MANH: Make pet input readonly and can edit when click button edit -->
           <div class="detail-form">
             <% for( let field of petField ) { %>
-            <input type="text" class="form-control" placeholder="<%= field %>" value="<%= petInfo[field] %> " />
+            <input type="text" class="form-control input-form" placeholder="<%= field %>" readonly value="<%= petInfo[field] %> " />
             <% } %>
           </div>
         </div>

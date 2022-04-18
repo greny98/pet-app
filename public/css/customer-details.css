@@ -212,6 +212,7 @@ i{
 .user-info input{
     width: 100%;
     color: rgba(255, 255, 255, 1);
+    background-color: rgba(33, 43, 54, 1);
     text-align: left;
     padding-left: 24px;
     line-height: 60px;

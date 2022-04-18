@@ -1,10 +1,12 @@
-@import "./login.css";
+@import "./detail.css";
 @Import "./register.css";
 @import "./resetpassword.css";
-@import "./detail.css";
+@import "./login.css";
 @import "./list.css";
 @import "./customer-details.css";
-
+@import "./dewormming.css";
+@import "./immunization.css";
+@import "./medical-history.css";
 
 
 :root{
@@ -38,3 +40,8 @@
 .full-height{
   height: calc(100vh - 96px);
 }
+
+input:read-only {
+  background-color: rgba(33, 43, 54, 1) !important;
+  color: rgba(255,255,255,1);
+  }
