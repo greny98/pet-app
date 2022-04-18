@@ -3,9 +3,6 @@ import { EAgeUnitType } from '@interfaces/immunization.interface';
 
 export class createImmunizationDto {
   @IsString()
-  public pet: string;
-
-  @IsString()
   public vaccine: string;
 
   @IsNumber()
