@@ -1,44 +1,34 @@
-// SELECTOR COLLECTION
-const selector = {
-  tableTag: document.querySelector('#table-record > table'),
-  btnHistory: document.getElementById('btn_history'),
-  btnImmunization: document.getElementById('btn_immunization'),
-  btnDeworm: document.getElementById('btn_deworm'),
-  totalPages: document.getElementById('page-total'),
-  pageStart: document.getElementById('page-start'),
-  pageEnd: document.getElementById('page-end'),
-  btnBack: document.getElementsByClassName('btn-back')[0],
-  btnNext: document.getElementsByClassName('btn-next')[0],
-};
-// Create Table Field
-const historyField = ['Bác sĩ', 'Thú cưng', 'Khách hàng', 'Thời gian', 'Chẩn đoán', 'Trạng thái'];
-const immunizationField = ['Thú cưng', 'Tuổi', 'Loại văccine', 'Đơn vị', 'Thời gian'];
-const dewormField = ['Thú cưng', 'Thời gian'];
-// DATA Type
-const DATA = {
-  HISTORY: 'medicalHistories',
-  IMMUNIZATAION: 'immunization',
-  DEWORM: 'deworming',
-};
-
 window.onload = () => {
+  // SELECTOR COLLECTION
+  const selector = {
+    tableTag: document.querySelector('#table-record > table'),
+    btnHistory: document.getElementById('btn_history'),
+    btnImmunization: document.getElementById('btn_immunization'),
+    btnDeworm: document.getElementById('btn_deworm'),
+    totalPages: document.getElementById('page-total'),
+    pageStart: document.getElementById('page-start'),
+    pageEnd: document.getElementById('page-end'),
+    btnBack: document.getElementsByClassName('btn-back')[0],
+    btnNext: document.getElementsByClassName('btn-next')[0],
+    btnAdd: document.getElementById('btn-add'),
+  };
+  // Create Table Field
+  const historyField = ['Bác sĩ', 'Thú cưng', 'Khách hàng', 'Thời gian', 'Chẩn đoán', 'Trạng thái'];
+  const immunizationField = ['Thú cưng', 'Tuổi', 'Loại văccine', 'Đơn vị', 'Thời gian'];
+  const dewormField = ['Thú cưng', 'Thời gian'];
+  // DATA Type
+  const DATA = {
+    HISTORY: 'medicalHistories',
+    IMMUNIZATAION: 'immunization',
+    DEWORM: 'deworming',
+  };
   const petId = location.href.split('/')[4];
   // fill value for customer form
-  // select table
-  const tableTag = selector.tableTag;
-  // // Select button
-  const btnHistory = selector.btnHistory;
-  const btnImmunization = selector.btnImmunization;
-  const btnDeworm = selector.btnDeworm;
-
+  const { tableTag, btnHistory, btnImmunization, btnDeworm, btnBack, btnNext } = selector;
   let fieldType = historyField;
-  // Initial Index Pages
+  // Initial Variable
   let index = 1;
-  // initial type data
   let dataType = DATA.HISTORY;
-  // Select Btn Pagination
-  const btnBack = selector.btnBack;
-  const btnNext = selector.btnNext;
 
   const removeTable = () => {
     tableTag.innerHTML = '';
@@ -80,7 +70,6 @@ window.onload = () => {
   };
 
   const getTableData = async (pageIndex, fieldType, dataType) => {
-    console.log(dataType, '===', petId);
     // Enabled btn
     btnBack.disabled = false;
     btnBack.classList.remove('btn-disabled');
@@ -125,6 +114,7 @@ window.onload = () => {
     isNext ? index++ : index--;
     getTableData(index, fieldType);
   };
+
   btnBack.onclick = () => onHandleBtn(false);
   btnNext.onclick = () => onHandleBtn(true);
 
@@ -149,5 +139,9 @@ window.onload = () => {
     fieldType = dewormField;
     dataType = DATA.DEWORM;
     getTableData(index, fieldType, dataType);
+  };
+
+  selector.btnAdd.onclick = () => {
+    location.href = `/${dataType}/${petId}/create`;
   };
 };

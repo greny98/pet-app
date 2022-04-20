@@ -1,52 +1,52 @@
-:root{
-  --bg-main:#161c24;
-  --bg-card:#212b36;
-  --border-color:#45505b;
+:root {
+  --bg-main: #161c24;
+  --bg-card: #212b36;
+  --border-color: #45505b;
 }
 
 
-.detail-info-container{
+.detail-info-container {
   background-color: var(--bg-card);
-  width:100%;
+  width: 100%;
   border-radius: 16px;
   padding: 5%;
 }
 
-.detail-title-card{
+.detail-title-card {
   border-radius: 8px;
-  padding:8px 0px;
-  margin:6px 0;
+  padding: 8px 0px;
+  margin: 6px 0;
   text-align: center;
-  font-size:24px;
+  font-size: 24px;
   font-weight: 700;
 }
 
-.detail-form{
-  display:flex;
+.detail-form {
+  display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
 }
 
-.input-form{
+.input-form {
   flex-basis: 48%;
   background-color: transparent;
-  color:white;
+  color: white;
   border-color: var(--border-color);
-  margin:16px 0;
+  margin: 16px 0;
 }
 
-.input-form:focus-within{
+.input-form:focus-within {
   background-color: transparent;
-  color:white;
+  color: white;
 }
 
-hr{
-  background-color:var(--border-color) ;
+hr {
+  background-color: var(--border-color);
 }
 
-.avatar-container{
-  flex-basis:30%;
+.avatar-container {
+  flex-basis: 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,12 +55,14 @@ hr{
 }
 
 
-.avatar{
+.avatar {
   vertical-align: middle;
-  width: 80%;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
 }
-.btn-container{
+
+.btn-container {
   width: 100%;
   display: flex;
   align-items: center;
@@ -69,32 +71,38 @@ hr{
 
 table {
   border-spacing: 0px;
-  }
+}
 
-thead{
+thead {
   background-color: var(--border-color);
   border-color: transparent;
   border-radius: 8px;
 }
 
-.pagination-container{
+.pagination-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-#btn-pagination{
-  margin-left:30px;
+#btn-pagination {
+  margin-left: 30px;
 }
 
-.btn-back{
-  background: transparent; border: none;
-}
-.btn-next{
-  background: transparent; border: none;
+.btn-back {
+  background: transparent;
+  border: none;
 }
 
-.btn-disabled{
+.btn-next {
+  background: transparent;
+  border: none;
+}
+
+.btn-disabled {
   opacity: 0.5;
 }
 
+.btn-add{
+  background-color: transparent;
+}

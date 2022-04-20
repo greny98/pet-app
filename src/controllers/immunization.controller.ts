@@ -2,6 +2,8 @@ import { NextFunction, Response } from 'express';
 import { RequestWithUser } from '@/interfaces/auth.interface';
 import ImmunizationService from '@/services/immunizations.service';
 import { Immunization } from '@interfaces/immunization.interface';
+import PetService from '@/services/pets.service';
+import moment from 'moment';
 
 interface getByPetParams {
   petId: string;
@@ -9,6 +11,7 @@ interface getByPetParams {
 
 class ImmunizationsController {
   public immunizationService = new ImmunizationService();
+  public petService = new PetService();
 
   public getImmunizationPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
@@ -21,17 +24,20 @@ class ImmunizationsController {
   };
   public getImmunizationForm = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
-      res.status(200).render('pages/form/immunization');
+      const { petId } = req.params as any as getByPetParams;
+      const petInfo: any = await this.petService.getById(petId);
+      res.status(200).render('pages/form/immunization', {
+        petInfo: { ...petInfo._doc, birthDate: moment(petInfo.birthDate).format('DD/MM/YYYY') },
+      });
     } catch (error) {
       next(error);
     }
   };
-  // TODO-HA: create immunization
   public createImmunizationPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
-      const ImmunizationData = req.body;
-      ImmunizationData.pet = req.params.petId;
-      const createImmunizationData: Immunization = await this.immunizationService.createImmunization(ImmunizationData);
+      const immunizationData = req.body;
+      immunizationData.pet = req.params.petId;
+      const createImmunizationData: Immunization = await this.immunizationService.createImmunization(immunizationData);
 
       res.status(201).json({ data: createImmunizationData, message: 'created' });
     } catch (error) {

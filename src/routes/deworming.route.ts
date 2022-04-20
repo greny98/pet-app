@@ -13,7 +13,7 @@ class DewormingRoute implements Routes {
   }
 
   private initializeRoutes() {
-    this.router.get(`${this.path}/create`, authMiddleware, this.dewormingController.getDewormForm);
+    this.router.get(`${this.path}/:petId/create`, authMiddleware, this.dewormingController.getDewormForm);
     this.router.get(`${this.path}/:petId`, authMiddleware, this.dewormingController.getDewormPet);
     this.router.post(`${this.path}/:petId`, authMiddleware, this.dewormingController.createDewormPet);
   }
