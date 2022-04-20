@@ -1,6 +1,7 @@
 import { NextFunction, Response } from 'express';
 import { RequestWithUser } from '@/interfaces/auth.interface';
 import ImmunizationService from '@/services/immunizations.service';
+import { Immunization } from '@interfaces/immunization.interface';
 
 interface getByPetParams {
   petId: string;
@@ -28,6 +29,11 @@ class ImmunizationsController {
   // TODO-HA: create immunization
   public createImmunizationPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
+      const ImmunizationData = req.body;
+      ImmunizationData.pet = req.params.petId;
+      const createImmunizationData: Immunization = await this.immunizationService.createImmunization(ImmunizationData);
+
+      res.status(201).json({ data: createImmunizationData, message: 'created' });
     } catch (error) {
       next(error);
     }

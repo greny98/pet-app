@@ -209,9 +209,10 @@ i{
     position: relative;  
 }
 
-.user-info p{
+.user-info input{
     width: 100%;
     color: rgba(255, 255, 255, 1);
+    background-color: rgba(33, 43, 54, 1);
     text-align: left;
     padding-left: 24px;
     line-height: 60px;
@@ -263,6 +264,7 @@ i{
     width: 360px;
     border-radius: 10px;
     margin-right: 24px;
+    padding-left: 24px;
 }
 
 #search-btn button{
@@ -285,7 +287,6 @@ i{
 
 ::placeholder{
     color: rgba(99, 115, 129, 1);
-    padding-left: 16px;
 }
 
 
@@ -326,4 +327,16 @@ i{
 
 .pet-details .abc .pet-info{
     padding-left: 24px;
+}
+
+.pet-details i{
+    font-size: 48px;
+    font-weight: bold;
+}
+
+#plus-btn{
+    background-color: rgba(33, 43, 54, 1);
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }

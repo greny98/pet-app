@@ -28,7 +28,7 @@
   width: 100%;
 }
 
-input[type=text]{
+.input-form{
   flex-basis: 48%;
   background-color: transparent;
   color:white;
@@ -36,7 +36,7 @@ input[type=text]{
   margin:16px 0;
 }
 
-input[type=text]:focus-within{
+.input-form:focus-within{
   background-color: transparent;
   color:white;
 }
