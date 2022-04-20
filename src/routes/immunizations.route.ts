@@ -15,7 +15,7 @@ class ImmunizationRoute implements Routes {
   private initializeRoutes() {
     this.router.get(`${this.path}/create`, authMiddleware, this.immunizationController.getImmunizationForm);
     this.router.get(`${this.path}/:petId`, authMiddleware, this.immunizationController.getImmunizationPet);
-
+    this.router.post(`${this.path}/:petId`, authMiddleware, this.immunizationController.createImmunizationPet);
   }
 }
 
