@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/pet-list.css">
+</head>
+<body>
+    <h1>Danh sách thú cưng</h1>
+
+    <table>
+        <thead>
+            <tr>
+              <td scope="col">#</td>
+              <td scope="col">Customer</td>
+              <td scope="col">Phone</td>
+              <td scope="col">Name</td>
+              <td scope="col">Type</td>
+              <td scope="col">Status</td>
+            </tr>
+          </thead>
+          <tbody>
+            <!--Render data-->
+            <% for (let i = 0; i < pets.length; i++) {%>
+            <tr accesskey="<%= pets[i]._id %> ">
+              <td><%= i %></td>
+              <td><%= pets[i].customer.name %></td>
+              <td><%= pets[i].customer.phone %></td>
+              <td><%= pets[i].name %></td>
+              <td><%= pets[i].type %></td>
+              <td><%= pets[i].status %></td>
+            </tr>
+            <% } %>
+          </tbody>
+    </table>
+</body>
+</html>

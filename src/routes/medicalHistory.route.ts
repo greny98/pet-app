@@ -13,8 +13,8 @@ class MedicalHistoryRoute implements Routes {
   }
 
   private initializeRoutes() {
-    this.router.get(`${this.path}/:petId`, authMiddleware, this.medicalHistoryController.getMedByPet);
     this.router.get(`${this.path}/create`, authMiddleware, this.medicalHistoryController.getMedForm);
+    this.router.get(`${this.path}/:petId`, authMiddleware, this.medicalHistoryController.getMedByPet);
     this.router.post(`${this.path}/:petId`, authMiddleware, this.medicalHistoryController.createMedByPet);
   }
 }

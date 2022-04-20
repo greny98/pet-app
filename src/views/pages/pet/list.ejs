@@ -1,16 +1,16 @@
 <% layout('layout/layout.main') %>
 <!-- TODO-MANH: design content list pet here -->
 <div class="full-height">
-  <h1>List Pets</h1>
+  <h1>Danh sách thú cưng</h1>
   <table class="table table-borderless table-hover">
     <thead>
       <tr>
-        <td scope="col">#</td>
-        <td scope="col">Customer</td>
-        <td scope="col">Phone</td>
-        <td scope="col">Name</td>
-        <td scope="col">Type</td>
-        <td scope="col">Status</td>
+        <td scope="col">ID</td>
+        <td scope="col">Tên khách hàng</td>
+        <td scope="col">Số điện</td>
+        <td scope="col">Tên thú cưng</td>
+        <td scope="col">Loại</td>
+        <td scope="col">Trạng thái</td>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +22,7 @@
         <td><%= pets[i].customer.phone %></td>
         <td><%= pets[i].name %></td>
         <td><%= pets[i].type %></td>
-        <td><%= pets[i].status %></td>
+        <td id="status"><%= pets[i].status %></td>
       </tr>
       <% } %>
     </tbody>

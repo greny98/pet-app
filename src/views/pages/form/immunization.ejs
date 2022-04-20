@@ -1,1 +1,28 @@
+<% layout('layout/layout.main') %>
 <!-- TODO-MANH: create immunization FORM  -->
+<h1>Thông tin tiêm chủng</h1>
+
+<form class="immunization-form" action="immunization">
+    <div style="margin-top: 36px;" >
+        <label for="immunization-name">Tên thú cưng</label></br>
+        <input class="immunization-input" type="text" name="" id=""  required></br>
+    </div>
+    <div>
+        <label for="immunization-id">ID thú cưng</label></br>
+        <input class="immunization-input" type="text" name="" id="immunization-id"  required></br>
+    </div>
+    <div>
+        <label for="immunization-age">Tuổi</label></br>
+        <input class="immunization-input" type="number" name="" id="immunization-age" required></br>
+    </div>
+    <div>
+        <label for="immunization-date">Ngày tiêm chủng</label></br>
+        <input class="immunization-input" type="date" name="" id="immunization-date" required></br>
+    </div>
+    <div>
+        <label for="immunization-medicine">Loại thuốc sử dụng</label></br>
+        <input class="immunization-input" type="text" name="" id="immunization-medicine" p required></br>
+    </div>
+    
+    <button  id="submit-btn" type="submit">Nhập dữ liệu</button>
+</form>
