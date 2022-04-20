@@ -2,9 +2,15 @@ import { NextFunction, Response } from 'express';
 import { RequestWithUser } from '@/interfaces/auth.interface';
 import MedicalHistoriesService from '@/services/medicalHistories.service';
 import { MedicalHistory } from '@interfaces/medicalHistory.interface';
+import PetService from '@/services/pets.service';
+
+interface getByPetParams {
+  petId: string;
+}
 
 class MedicalHistoryController {
   public medicalHistoryService = new MedicalHistoriesService();
+  public petService = new PetService();
 
   public getMedByPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
@@ -18,12 +24,13 @@ class MedicalHistoryController {
   };
   public getMedForm = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
-      res.status(200).render('pages/form/medical-history');
+      const { petId } = req.params as any as getByPetParams;
+      const petInfo: any = await this.petService.getById(petId);
+      res.status(200).render('pages/form/medical-history', { petInfo });
     } catch (error) {
       next(error);
     }
   };
-  // TODO-HA: create Med
   public createMedByPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
       const medData = req.body;

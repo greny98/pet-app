@@ -1,15 +1,10 @@
 <% layout('layout/layout.main') %>
-<!-- TODO-MANH: create deworming FORM  -->
 <h1>Thông tin tẩy giun</h1>
 
 <form class="deworming-form" action="deworming">
     <div style="margin-top: 36px;" >
         <label for="deworming-name">Tên thú cưng</label></br>
-        <input class="deworming-input" type="text" name="" id=""  required></br>
-    </div>
-    <div>
-        <label for="deworming-id">ID thú cưng</label></br>
-        <input class="deworming-input" type="text" name="" id="id"  required></br>
+        <input class="deworming-input" type="text" name="" readonly id="pet-name" value="<%= petInfo.name %>"  required></br>
     </div>
     <div>
         <label for="deworming-date">Ngày tẩy giun</label></br>
@@ -19,7 +14,9 @@
         <label for="deworming-medicine">Loại thuốc sử dụng</label></br>
         <input class="deworming-input" type="text" name="" id="deworming-medicine" p required></br>
     </div>
-    
+
     <button id="submit-btn" type="submit">Nhập dữ liệu</button>
 </form>
+
+<!-- Script -->
 <script src="/public/js/form/deworming.js"></script>

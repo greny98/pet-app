@@ -2,6 +2,7 @@ import { NextFunction, Response } from 'express';
 import { RequestWithUser } from '@/interfaces/auth.interface';
 import DewormingService from '@/services/deworming.service';
 import { Dewormings } from '@interfaces/dewormings.interface';
+import PetService from '@/services/pets.service';
 
 interface getByPetParams {
   petId: string;
@@ -9,6 +10,7 @@ interface getByPetParams {
 
 class DewormingController {
   public dewormingService = new DewormingService();
+  public petService = new PetService();
 
   public getDewormPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
@@ -21,12 +23,15 @@ class DewormingController {
   };
   public getDewormForm = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
-      res.status(200).render('pages/form/deworming');
+      const { petId } = req.params as any as getByPetParams;
+      const petInfo: any = await this.petService.getById(petId);
+      res.status(200).render('pages/form/deworming', {
+        petInfo,
+      });
     } catch (error) {
       next(error);
     }
   };
-  // TODO-HA: create deworm
   public createDewormPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
       const dewormingData = req.body;

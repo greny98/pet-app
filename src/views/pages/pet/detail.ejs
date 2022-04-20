@@ -6,7 +6,6 @@
       <div class="detail-title-card">Chủ sở hữu</div>
       <form action="">
         <!-- Form Info Customer -->
-        <!-- TODO-MANH: Make customer input readonly -->
         <div class="detail-form">
           <% for( let field of customerField ) { %>
           <input type="text" class="form-control input-form" placeholder="<%= field %>" readonly value="<%= petInfo.customer[field]  %>" />
@@ -21,10 +20,9 @@
       <form action="">
         <div class="d-flex align-items-center">
           <div class="avatar-container">
-            <img alt="image-rd" class="avatar" />
-            <input type="file" class="" style="width: 80%" />
+            <img alt="image-rd" class="avatar" id="avatar-pet" src="/public/assets/img/dog.jpg" />
+            <!-- <input type="file" class="" style="width: 80%" /> -->
           </div>
-          <!-- TODO-MANH: Make pet input readonly and can edit when click button edit -->
           <div class="detail-form">
             <% for( let field of petField ) { %>
             <input type="text" class="form-control input-form" placeholder="<%= field %>" readonly value="<%= petInfo[field] %> " />
@@ -42,6 +40,9 @@
   <!-- Medical Record -->
   <h3 class="mb-4">Lịch sử khám bệnh</h3>
   <div class="detail-info-container">
+    <div style="text-align: end;">
+      <button type="button" class="btn btn-primary" id="btn-add">Thêm</button>
+    </div>
     <div>
       <!-- Group btn -->
       <div class="btn-container justify-content-center">
@@ -80,6 +81,5 @@
   </div>
 
   <!-- Javascript DOM -->
-  
 </div>
 <script src="/public/js//pet/detail.js"></script>
