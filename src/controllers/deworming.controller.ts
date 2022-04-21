@@ -36,6 +36,7 @@ class DewormingController {
     try {
       const dewormingData = req.body;
       dewormingData.pet = req.params.petId;
+      console.log('🚀 ~ dewormingData', dewormingData);
       const createDewormingData: Dewormings = await this.dewormingService.createDeworm(dewormingData);
 
       res.status(201).json({ data: createDewormingData, message: 'created' });

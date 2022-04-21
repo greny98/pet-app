@@ -1,7 +1,7 @@
 <% layout('layout/layout.main') %>
 <h1>Thông tin tẩy giun</h1>
 
-<form class="deworming-form" action="deworming">
+<form class="deworming-form">
     <div style="margin-top: 36px;" >
         <label for="deworming-name">Tên thú cưng</label></br>
         <input class="deworming-input" type="text" name="" readonly id="pet-name" value="<%= petInfo.name %>"  required></br>
@@ -10,12 +10,7 @@
         <label for="deworming-date">Ngày tẩy giun</label></br>
         <input class="deworming-input" type="date" name="" id="deworming-date" required></br>
     </div>
-    <div>
-        <label for="deworming-medicine">Loại thuốc sử dụng</label></br>
-        <input class="deworming-input" type="text" name="" id="deworming-medicine" p required></br>
-    </div>
-
-    <button id="submit-btn" type="submit">Nhập dữ liệu</button>
+    <button id="submit-btn" type="button">Nhập dữ liệu</button>
 </form>
 
 <!-- Script -->

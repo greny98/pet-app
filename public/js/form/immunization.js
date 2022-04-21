@@ -6,7 +6,6 @@ window.onload = () => {
   submit_btn.onclick = async () => {
     const data = ['immunization-date', 'immunization-medicine'];
     const [date, vaccine] = data.map(e => document.getElementById(e).value);
-
     await axios.post(`/immunization/${petId}`, {
       date,
       vaccine,

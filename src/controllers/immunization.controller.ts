@@ -4,6 +4,7 @@ import ImmunizationService from '@/services/immunizations.service';
 import { Immunization } from '@interfaces/immunization.interface';
 import PetService from '@/services/pets.service';
 import moment from 'moment';
+import { calcDate } from '@/utils/util';
 
 interface getByPetParams {
   petId: string;
@@ -36,7 +37,11 @@ class ImmunizationsController {
   public createImmunizationPet = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
       const immunizationData = req.body;
-      immunizationData.pet = req.params.petId;
+      const { petId } = req.params as any as getByPetParams;
+      const petInfo: any = await this.petService.getById(petId);
+      immunizationData.pet = petId;
+      immunizationData.age = calcDate(petInfo.birthDate);
+      immunizationData.unit = 'M';
       const createImmunizationData: Immunization = await this.immunizationService.createImmunization(immunizationData);
 
       res.status(201).json({ data: createImmunizationData, message: 'created' });

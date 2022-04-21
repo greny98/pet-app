@@ -12,29 +12,44 @@ window.onload = () => {
     btnNext: document.getElementsByClassName('btn-next')[0],
     btnAdd: document.getElementById('btn-add'),
   };
-  // Create Table Field
-  const historyField = ['Bác sĩ', 'Thú cưng', 'Khách hàng', 'Thời gian', 'Chẩn đoán', 'Trạng thái'];
-  const immunizationField = ['Thú cưng', 'Tuổi', 'Loại văccine', 'Đơn vị', 'Thời gian'];
-  const dewormField = ['Thú cưng', 'Thời gian'];
   // DATA Type
-  const DATA = {
-    HISTORY: 'medicalHistories',
-    IMMUNIZATAION: 'immunization',
-    DEWORM: 'deworming',
+  const INFO = {
+    medicalHistories: {
+      type: 'medicalHistories',
+      fields: ['Bác sĩ', 'Thú cưng', 'Khách hàng', 'Thời gian', 'Chẩn đoán', 'Trạng thái'],
+      getContent: data => [
+        data.user.name,
+        data.pet.name,
+        data.pet.customer.name,
+        moment(data.date).format('DD/MM/YYYY'),
+        data.diagnosis,
+        data.pet.status,
+      ],
+    },
+    immunization: {
+      type: 'immunization',
+      fields: ['Thú cưng', 'Tuổi', 'Loại văccine', 'Đơn vị', 'Thời gian'],
+      getContent: data => [data.pet.name, data.age, data.vaccine, data.unit, moment(data.date).format('DD/MM/YYYY')],
+    },
+    deworming: {
+      type: 'deworming',
+      fields: ['Thú cưng', 'Thời gian'],
+      getContent: data => [data.pet.name, moment(data.date).format('DD/MM/YYYY')],
+    },
   };
   const petId = location.href.split('/')[4];
   // fill value for customer form
   const { tableTag, btnHistory, btnImmunization, btnDeworm, btnBack, btnNext } = selector;
-  let fieldType = historyField;
+  let fieldType = INFO.medicalHistories.fields;
   // Initial Variable
   let index = 1;
-  let dataType = DATA.HISTORY;
+  let dataType = INFO.medicalHistories.type;
 
   const removeTable = () => {
     tableTag.innerHTML = '';
   };
 
-  const createTableHeader = (table, fieldType) => {
+  const createTableHeader = table => {
     const tHead = document.createElement('thead');
     const tRow = document.createElement('tr');
     for (let headField of fieldType) {
@@ -51,14 +66,7 @@ window.onload = () => {
     tBody.innerHTML = '';
     for (let data of tableData) {
       const tRow = document.createElement('tr');
-      const showData = [
-        data.user.name,
-        data.pet.name,
-        data.pet.customer.name,
-        moment(data.date).format('DD/MM/YYYY'),
-        data.diagnosis,
-        data.pet.status,
-      ];
+      const showData = INFO[dataType].getContent(data);
       for (let elm of showData) {
         const td = document.createElement('td');
         td.appendChild(document.createTextNode(elm));
@@ -69,7 +77,7 @@ window.onload = () => {
     table.appendChild(tBody);
   };
 
-  const getTableData = async (pageIndex, fieldType, dataType) => {
+  const getTableData = async pageIndex => {
     // Enabled btn
     btnBack.disabled = false;
     btnBack.classList.remove('btn-disabled');
@@ -103,43 +111,46 @@ window.onload = () => {
       btnNext.classList.add('btn-disabled');
     }
     const dataShow = histories.filter((v, index) => index >= pageIndex * pageSize - 5 && index <= pageIndex * pageSize - 1);
-    console.log('🚀 ~ file: detail.js ~ line 98 ~ getTableData ~ dataShow', dataShow);
+    console.log('🚀 ~ dataShow', dataShow);
     // render history data to html
     removeTable();
-    createTableHeader(tableTag, fieldType);
+    createTableHeader(tableTag);
     createTableBody(tableTag, dataShow);
   };
 
   const onHandleBtn = isNext => {
     isNext ? index++ : index--;
-    getTableData(index, fieldType);
+    getTableData(index);
   };
-
   btnBack.onclick = () => onHandleBtn(false);
   btnNext.onclick = () => onHandleBtn(true);
 
   // Show data first Tab
-  getTableData(index, fieldType, dataType);
+  getTableData(index);
   // Change Data Table
-  btnHistory.onclick = () => {
-    removeTable();
-    fieldType = historyField;
-    dataType = DATA.HISTORY;
-    getTableData(index, fieldType, dataType);
-  };
-  btnImmunization.onclick = () => {
-    removeTable();
-    fieldType = immunizationField;
-    dataType = DATA.IMMUNIZATAION;
-
-    getTableData(index, fieldType, dataType);
-  };
-  btnDeworm.onclick = () => {
-    removeTable();
-    fieldType = dewormField;
-    dataType = DATA.DEWORM;
-    getTableData(index, fieldType, dataType);
-  };
+  const btnGroup = [
+    {
+      button: btnHistory,
+      type: 'medicalHistories',
+    },
+    {
+      button: btnImmunization,
+      type: 'immunization',
+    },
+    {
+      button: btnDeworm,
+      type: 'deworming',
+    },
+  ];
+  btnGroup.forEach(item => {
+    item.button.onclick = () => {
+      removeTable();
+      fieldType = INFO[item.type].fields;
+      dataType = INFO[item.type].type;
+      index = 1;
+      getTableData(index);
+    };
+  });
 
   selector.btnAdd.onclick = () => {
     location.href = `/${dataType}/${petId}/create`;
