@@ -1,7 +1,7 @@
 <% layout('layout/layout.main') %>
 <h1>Thông tin tiêm chủng</h1>
 
-<form class="immunization-form" action="immunization">
+<form class="immunization-form">
     <div style="margin-top: 36px;" >
         <label for="immunization-name">Tên thú cưng</label></br>
         <input class="immunization-input" type="text" name="" id="pet-name" value="<%= petInfo.name %>"  required></br>
@@ -19,7 +19,7 @@
         <input class="immunization-input" type="text" name="" id="immunization-medicine" p required></br>
     </div>
 
-    <button  id="submit-btn" type="submit">Nhập dữ liệu</button>
+    <button id="submit-btn" type="button">Nhập dữ liệu</button>
 </form>
 <!-- Script -->
 <script src="/public/js/form/immunization.js"></script>

@@ -2,7 +2,7 @@
 
 <h1>Thông tin thăm khám</h1>
 
-<form class="medical-form" action="medical-history">
+<form class="medical-form">
     <div style="margin-top: 36px;" >
         <label for="user-name">Tên khách hàng</label></br>
         <input class="medical-input" type="text" name="" id="user-name" readonly value="<%= petInfo.customer.name %>"  required></br>
@@ -16,11 +16,11 @@
         <input class="medical-input" type="date" name="" id="medical-date" required></br>
     </div>
     <div>
-        <label for="medical-note">Ghi chú</label></br>
-        <input class="medical-input"  type="text" name="" id="medical-note" p required></br>
+        <label for="medical-note">Chẩn đoán</label></br>
+        <input class="medical-input"  type="text" name="" id="medical-diagnosis" p required></br>
     </div>
 
-    <button id="submit-btn" type="submit" >Nhập dữ liệu</button>
+    <button id="submit-btn" type="button">Nhập dữ liệu</button>
 </form>
 <!-- Script -->
 <script src="/public/js/form/medical-history.js"></script>

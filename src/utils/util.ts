@@ -17,3 +17,10 @@ export const isEmpty = (value: string | number | object): boolean => {
     return false;
   }
 };
+
+export const calcDate = date => {
+  const monthDiff = Date.now() - date;
+  const ageDT = new Date(monthDiff);
+  const year = ageDT.getUTCFullYear();
+  return Math.abs(year - 1970) === 0 ? 1 : Math.abs(year - 1970);
+};
